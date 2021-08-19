@@ -6,15 +6,15 @@
 
 1. [GITHUB PAGE] Fork the project repo:
 
-    * click "fork" from https://github.com/digimokan/ans_pb_cfg_userl_freebsd_mate
+    * click "fork" from https://github.com/digimokan/ans_plbk_freebsd_mate_userl
 
 2. [LOCAL] Create local repo:
 
-        $ git clone --recurse-submodules https://github.com/[your-github-username]/ans_pb_cfg_userl_freebsd_mate
+        $ git clone --recurse-submodules https://github.com/[your-github-username]/ans_plbk_freebsd_mate_userl
 
 3. [LOCAL] Link upstream repo:
 
-        $ git remote add upstream https://github.com/digimokan/ans_pb_cfg_userl_freebsd_mate
+        $ git remote add upstream https://github.com/digimokan/ans_plbk_freebsd_mate_userl
 
 ### Development Workflow
 
