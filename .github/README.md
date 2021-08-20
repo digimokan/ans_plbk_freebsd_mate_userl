@@ -40,21 +40,21 @@ Set up a workstation/desktop-PC for normal daily use:
 2. Insert the USB stick into the target workstation PC, and boot from the
    FreeBSD installer image.
 
-2. Follow the guided installation. Select these options:
+2. Follow guided installation. Select/enable _only_ these options:
 
-    * zfs filesystem.
-
-
-
+    * hostname: _userl.machine_
+    * zfs guided installation: _stripe_ (for 1 disk), or _mirror_ (for 2 disks)
+    * IPv4: enable _dhcp_
+    * services: _ntpd_, _ntpdate_, _dumpdev_
 
 3. Remove the USB stick, and reboot the PC to the new installation.
 
 ### Configure Workstation
 
-1. Install ansible at the root prompt:
+1. Install _git_, _python_, and _ansible_ packages at the root prompt:
 
    ```shell
-   $ pkg install sysutils/ansible
+   $ pkg install git python sysutils/ansible
    ```
 
 2. Clone project into a local project directory:
