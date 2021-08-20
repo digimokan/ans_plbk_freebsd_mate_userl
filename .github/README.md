@@ -40,7 +40,7 @@ Set up a workstation/desktop-PC for normal daily use:
 2. Insert the USB stick into the target workstation PC, and boot from the
    FreeBSD installer image.
 
-2. Follow guided installation. Select/enable _only_ these options:
+2. Follow guided installation. Select/enable __only__ these options:
 
     * hostname: _userl.machine_
     * zfs guided installation: _stripe_ (for 1 disk), or _mirror_ (for 2 disks)
