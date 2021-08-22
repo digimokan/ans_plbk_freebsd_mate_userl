@@ -34,20 +34,23 @@ Set up a workstation/desktop-PC for normal daily use:
 
 ### Create FreeBSD ISO
 
-1. Write the FreeBSD installer image to a USB stick, as described in
+1. Download the latest _RELEASE_ installer image for _amd64_ on the
+   [FreeBSD Download Page](https://www.freebsd.org/where/).
+
+2. Write the installer image to a USB stick, as described in
    [FreeBSD Handbook Installation Chapter](https://docs.freebsd.org/en/books/handbook/bsdinstall/#bsdinstall-pre).
 
-2. Insert the USB stick into the target workstation PC, and boot from the
+3. Insert the USB stick into the target workstation PC, and boot from the
    FreeBSD installer image.
 
-2. Follow guided installation. Select/enable __only__ these options:
+4. Follow guided installation. Select/enable __only__ these options:
 
     * hostname: _userl.machine_
     * zfs guided installation: _stripe_ (for 1 disk), or _mirror_ (for 2 disks)
     * IPv4: enable _dhcp_
     * services: _ntpd_, _ntpdate_, _dumpdev_
 
-3. Remove the USB stick, and reboot the PC to the new installation.
+5. Remove the USB stick, and reboot the PC to the new installation.
 
 ### Configure Workstation
 
