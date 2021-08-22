@@ -10,7 +10,7 @@ Ansible playbook to configure FreeBSD with the MATE DE, for one user.
 * [Purpose](#purpose)
 * [Hardware Requirements](#hardware-requirements)
 * [Quick Start](#quick-start)
-    * [Create FreeBSD ISO](#create-freebsd-iso)
+    * [Install Base System](#install-base-system)
     * [Configure Workstation](#configure-workstation)
     * [Update Workstation](#update-workstation)
 * [Vault Variables](#vault-variables)
@@ -32,7 +32,7 @@ Set up a workstation/desktop-PC for normal daily use:
 
 ## Quick Start
 
-### Create FreeBSD ISO
+### Install Base System
 
 1. Download the latest _RELEASE_ installer image for _amd64_ on the
    [FreeBSD Download Page](https://www.freebsd.org/where/).
