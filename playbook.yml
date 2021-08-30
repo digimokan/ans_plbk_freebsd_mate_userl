@@ -31,7 +31,7 @@
       vars:
         pool: "{{ zfs_pool }}"
         dataset_path: "home"
-        mount_point: "/home"
+        # mount_point: "/home"
 
     # - name: "Add and configure admin user"
     #   ansible.builtin.include_role:
