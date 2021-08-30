@@ -5,6 +5,7 @@
   vars:
     admin_user_and_group_name: "admin"
     sudo_users_group_name: "wheel"
+    zfs_pool: "zroot"
   tasks:
     - name: "Configure system clock, time, and time zone"
       ansible.builtin.include_role:
@@ -24,6 +25,14 @@
       vars:
         group_name: "{{ sudo_users_group_name }}"
         is_system_group: true
+    - name: "Create independent zfs filesystem dataset for '/home'"
+      ansible.builtin.include_role:
+        name: ans_role_create_filesystem_dataset
+      vars:
+        pool: "{{ zfs_pool }}"
+        dataset_path: "home"
+        # mount_point: "/home"
+
     # - name: "Add and configure admin user"
     #   ansible.builtin.include_role:
     #     name: ext/ans_role_add_user
