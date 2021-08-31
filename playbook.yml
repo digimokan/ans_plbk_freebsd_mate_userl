@@ -39,6 +39,7 @@
         user_name: "{{ admin_user_and_group_name }}"
         is_system_user: true
         user_groups: "{{ sudo_users_group_name }}"
+        create_home_dir: true
         use_zfs_dataset_for_home_dir: false
     # - name: "Add and configure workstation user {{ wkst_user_and_group_name }}"
     #   ansible.builtin.include_role:
