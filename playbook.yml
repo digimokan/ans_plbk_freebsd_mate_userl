@@ -46,6 +46,7 @@
         name: ans_role_config_fish
       vars:
         user_name: "{{ admin_user_and_group_name }}"
+        set_as_login_shell: true
 
     # - name: "Add and configure workstation user {{ wkst_user_and_group_name }}"
     #   ansible.builtin.include_role:
