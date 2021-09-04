@@ -66,21 +66,6 @@
     #     name: ext/ans_role_config_xdg_user_dirs
     #   vars:
     #     user_name: "{{ wkst_user_and_group_name }}"
-    # - name: "Ignore select '.pacnew' files after system upgrades"
-    #   ansible.builtin.include_role:
-    #     name: ext/ans_role_pacnew_ignore
-    #   vars:
-    #     file_paths:
-    #       - "/etc/shadow"
-    #       - "/etc/group"
-    #       - "/etc/gshadow"
-    #       - "/etc/fstab"
-    #       - "/etc/hosts"
-    #       - "/etc/pacman.d/mirrorlist"
-    #       - "/etc/locale.gen"
-    # - name: "Set up configuration for installing unofficial packages"
-    #   ansible.builtin.include_role:
-    #     name: ans_role_config_unofficial_packages
     # - name: "Install and configure video card drivers"
     #   ansible.builtin.include_role:
     #     name: ext/ans_role_config_video_drivers
