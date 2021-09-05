@@ -47,13 +47,13 @@
       vars:
         user_name: "{{ admin_user_and_group_name }}"
         set_as_login_shell: true
-        create_home_dir: true
-        use_zfs_dataset_for_home_dir: true
     - name: "Add and configure workstation user '{{ wkst_user_and_group_name }}'"
       ansible.builtin.include_role:
         name: ext/ans_role_add_user
       vars:
         user_name: "{{ wkst_user_and_group_name }}"
+        create_home_dir: true
+        use_zfs_dataset_for_home_dir: true
     - name: "Configure sudo settings, auth group '{{ sudo_users_group_name }}', and shell user '{{ admin_user_and_group_name }}'"
       ansible.builtin.include_role:
         name: ext/ans_role_config_sudo
