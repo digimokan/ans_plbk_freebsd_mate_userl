@@ -51,10 +51,10 @@
     - name: "Clone this playbook repo to home dir of admin user '{{ admin_user_and_group_name }}'"
       ansible.builtin.git:
         repo: "https://github.com/digimokan/ans_plbk_freebsd_mate_userl.git"
-        dest: "/home/{{ admin_user_and_group_name }}/"
+        dest: "/home/{{ admin_user_and_group_name }}/ans_plbk_freebsd_mate_userl"
         update: no
       become: true
-      become_user: root
+      become_user: "{{ admin_user_and_group_name }}"
     - name: "Add and configure workstation user '{{ wkst_user_and_group_name }}'"
       ansible.builtin.include_role:
         name: ext/ans_role_add_user
