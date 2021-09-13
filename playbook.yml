@@ -145,21 +145,4 @@
     #   vars:
     #     install_ms_legacy_fonts: true
     #     install_ms_vista_fonts: true
-    - name: "Add test user 'yessys'"
-      ansible.builtin.include_role:
-        name: ext/ans_role_add_user
-      vars:
-        user_name: 'yessys'
-        is_system_user: true
-        comment: 'yessys'
-        create_home_dir: true
-        use_zfs_dataset_for_home_dir: true
-    - name: "Add test user 'nosys'"
-      ansible.builtin.include_role:
-        name: ext/ans_role_add_user
-      vars:
-        user_name: 'nosys'
-        comment: 'nosys'
-        create_home_dir: true
-        use_zfs_dataset_for_home_dir: true
 
