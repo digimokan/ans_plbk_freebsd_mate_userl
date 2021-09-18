@@ -41,6 +41,15 @@
         comment: "{{ admin_user_and_group_name }}"
         create_home_dir: true
         use_zfs_dataset_for_home_dir: true
+    - name: "Configure sudo settings, auth group '{{ sudo_users_group_name }}', and shell user '{{ admin_user_and_group_name }}'"
+      ansible.builtin.include_role:
+        name: ext/ans_role_config_sudo
+      vars:
+        ask_password_timeout: 45
+        password_prompt_timeout_minutes: 0
+        use_root_umask: true
+        set_auth_for_group: "{{ sudo_users_group_name }}"
+        user_for_shell_enhancements: "{{ admin_user_and_group_name }}"
     - name: "Set up fish shell for admin user '{{ admin_user_and_group_name }}'"
       ansible.builtin.include_role:
         name: ans_role_config_fish
@@ -130,15 +139,6 @@
         hide_users_list: [ "{{ wkst_user_and_group_name }}" ]
         session: "mate"
         login_screen_image_path: "/usr/local/share/backgrounds/mate/desktop/Ubuntu-Mate-Cold-no-logo.png"
-    - name: "Configure sudo settings, auth group '{{ sudo_users_group_name }}', and shell user '{{ admin_user_and_group_name }}'"
-      ansible.builtin.include_role:
-        name: ext/ans_role_config_sudo
-      vars:
-        ask_password_timeout: 45
-        password_prompt_timeout_minutes: 0
-        use_root_umask: true
-        set_auth_for_group: "{{ sudo_users_group_name }}"
-        user_for_shell_enhancements: "{{ admin_user_and_group_name }}"
     # - name: "Install a standard set of system font packages"
     #   ansible.builtin.include_role:
     #     name: ext/ans_role_config_fonts
