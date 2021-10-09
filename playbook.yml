@@ -94,7 +94,7 @@
     #     name: ans_role_config_vlc
     #   vars:
     #     enable_dvd_support: true
-    # - name: "Install and configure the Firefox browser"
+    - name: "Install and configure the Firefox browser"
       ansible.builtin.include_role:
         name: ans_role_config_firefox
       vars:
