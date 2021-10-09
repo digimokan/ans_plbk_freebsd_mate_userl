@@ -105,8 +105,7 @@
       ansible.builtin.include_role:
         name: ans_role_config_chromium
       vars:
-        # home_page: 'https://www.google.com'
-        home_page: 'https://startpage.com'
+        home_page: 'https://www.google.com'
     # - name: "Configure automatic printer discovery and driverless printing"
     #   ansible.builtin.include_role:
     #     name: ans_role_config_automatic_printing
