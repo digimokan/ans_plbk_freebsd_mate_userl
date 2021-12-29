@@ -89,11 +89,11 @@
     - name: "Install and configure the LibreOffice office application suite"
       ansible.builtin.include_role:
         name: ans_role_config_libreoffice
-    # - name: "Install and configure the VLC video player"
-    #   ansible.builtin.include_role:
-    #     name: ans_role_config_vlc
-    #   vars:
-    #     enable_dvd_support: true
+    - name: "Install and configure the VLC video player"
+      ansible.builtin.include_role:
+        name: ans_role_config_vlc
+      vars:
+        enable_dvd_support: true
     - name: "Define list of browser search providers"
       ansible.builtin.import_role:
         name: ext/ans_role_vars_browser_search_providers
