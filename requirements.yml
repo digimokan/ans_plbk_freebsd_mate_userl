@@ -7,7 +7,7 @@ roles:
   - src: https://github.com/digimokan/ans_role_config_firefox
   - src: https://github.com/digimokan/ans_role_config_fish
   # - src: https://github.com/digimokan/ans_role_config_fonts
-  # - src: https://github.com/digimokan/ans_role_config_libreoffice
+  - src: https://github.com/digimokan/ans_role_config_libreoffice
   - src: https://github.com/digimokan/ans_role_config_lightdm_dm
   - src: https://github.com/digimokan/ans_role_config_loader
   - src: https://github.com/digimokan/ans_role_config_mate_de
