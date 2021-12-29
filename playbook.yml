@@ -104,13 +104,14 @@
         user_name: "{{ wkst_user_and_group_name }}"
         home_page: 'https://www.google.com'
         install_google_widevine_drm_addon: true
+        chromium_search_providers: "{{ browser_search_providers }}"
+        # testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        install_vimium_ext: true
     - name: "Install and configure the Chromium browser"
       ansible.builtin.include_role:
         name: ans_role_config_chromium
       vars:
         home_page: 'https://www.google.com'
-        # testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        install_vimium_ext: true
         chromium_search_providers: "{{ browser_search_providers }}"
     # - name: "Configure automatic printer discovery and driverless printing"
     #   ansible.builtin.include_role:
