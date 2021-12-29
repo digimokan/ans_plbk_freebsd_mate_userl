@@ -113,6 +113,8 @@
       vars:
         home_page: 'https://www.google.com'
         chromium_search_providers: "{{ browser_search_providers }}"
+        # testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        install_vimium_ext: true
     # - name: "Configure automatic printer discovery and driverless printing"
     #   ansible.builtin.include_role:
     #     name: ans_role_config_automatic_printing
