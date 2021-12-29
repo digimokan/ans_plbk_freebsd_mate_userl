@@ -21,4 +21,5 @@ roles:
   # - src: https://github.com/digimokan/ans_role_config_vlc
   - src: https://github.com/digimokan/ans_role_config_xdg_user_dirs
   - src: https://github.com/digimokan/ans_role_create_filesystem_dataset
+  - src: https://github.com/digimokan/ans_role_vars_browser_search_providers
 
