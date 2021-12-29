@@ -95,7 +95,7 @@
     #   vars:
     #     enable_dvd_support: true
     - name: "Define list of browser search providers"
-      ansible.builtin.include_role:
+      ansible.builtin.import_role:
         name: ext/ans_role_vars_browser_search_providers
     - name: "Install and configure the Firefox browser"
       ansible.builtin.include_role:
