@@ -125,9 +125,9 @@
         printer_id: "CanonColorPrinter"
         printer_location: "Upstairs Study"
         printer_ip_address: "172.24.24.33"
-    # - name: "Configure automatic scanner discovery and driverless scanning"
-    #   ansible.builtin.include_role:
-    #     name: ans_role_config_automatic_scanning
+    - name: "Configure automatic scanner discovery and driverless scanning"
+      ansible.builtin.include_role:
+        name: ans_role_config_automatic_scanning
     # - name: "Install and configure the Simple-Scan scanning application"
     #   ansible.builtin.include_role:
     #     name: ans_role_config_simple_scan
