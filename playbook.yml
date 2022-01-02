@@ -117,9 +117,9 @@
     - name: "Configure automatic scanner discovery and driverless scanning"
       ansible.builtin.include_role:
         name: ans_role_config_automatic_scanning
-    # - name: "Install and configure the Simple-Scan scanning application"
-    #   ansible.builtin.include_role:
-    #     name: ans_role_config_simple_scan
+    - name: "Install and configure the Skanlite scanning application"
+      ansible.builtin.include_role:
+        name: ans_role_config_skanlite
     # - name: "Install the Tarsnap backup program, and configure backups"
     #   ansible.builtin.include_role:
     #     name: ans_role_config_tarsnap
