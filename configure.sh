@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# use ansible-galaxy cmd to download roles from github/galaxy/etc
-ansible-galaxy role install \
+# use ansible-galaxy cmd to download roles & collections from github/galaxy/etc
+ansible-galaxy install \
   --role-file requirements.yml \
   --roles-path ./roles/ext \
   --force-with-deps \
