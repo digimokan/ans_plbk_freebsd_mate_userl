@@ -120,6 +120,9 @@
     - name: "Install and configure the Skanlite scanning application"
       ansible.builtin.include_role:
         name: ans_role_config_skanlite
+    - name: "Install and configure the OBS video-recording application"
+      ansible.builtin.include_role:
+        name: ans_role_config_obs
     - name: "Install the Tarsnap backup program, and configure backups"
       ansible.builtin.include_role:
         name: ans_role_config_tarsnap
