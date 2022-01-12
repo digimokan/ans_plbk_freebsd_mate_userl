@@ -34,7 +34,7 @@ Set up a workstation/desktop-PC for normal daily use:
 
 ### Install Base System
 
-1. Download the latest _RELEASE_ installer image for _amd64_ on the
+1. Download the latest _RELEASE_ installer image for _amd64_ ("disc1") on the
    [FreeBSD Download Page](https://www.freebsd.org/where/).
 
 2. Write the installer image to a USB stick, as described in
