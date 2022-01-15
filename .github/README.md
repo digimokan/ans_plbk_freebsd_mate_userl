@@ -1,6 +1,6 @@
 # ans_plbk_freebsd_mate_userl
 
-Ansible playbook to configure FreeBSD with the MATE DE, for one user.
+Ansible playbook to configure FreeBSD on a NUC6I7KYK with the MATE DE.
 
 [![Release](https://img.shields.io/github/release/digimokan/ans_plbk_freebsd_mate_userl.svg?label=release)](https://github.com/digimokan/ans_plbk_freebsd_mate_userl/releases/latest "Latest Release Notes")
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?label=license)](LICENSE.txt "Project License")
@@ -9,6 +9,7 @@ Ansible playbook to configure FreeBSD with the MATE DE, for one user.
 
 * [Purpose](#purpose)
 * [Hardware Requirements](#hardware-requirements)
+* [Hardware Configuration](#hardware-configuration)
 * [Quick Start](#quick-start)
     * [Install Base System](#install-base-system)
     * [Configure Workstation](#configure-workstation)
@@ -19,16 +20,26 @@ Ansible playbook to configure FreeBSD with the MATE DE, for one user.
 
 ## Purpose
 
-Set up a workstation/desktop-PC for normal daily use:
+Set up a workstation/desktop-PC on a [NUC6I7KYK](https://www.intel.com/content/www/us/en/products/sku/89187/intel-nuc-kit-nuc6i7kyk/specifications.html)
+for normal daily use, for one user:
 
 * Configure the MATE desktop environment.
 * Configure a basic set of applications.
 
 ## Hardware Requirements
 
+* NUC6I7KYK, with RAM installed, and one or two hard drives installed.
 * An empty/formattable USB stick (to write the FreeBSD iso to).
 * A workstation PC with with an empty/formattable hard drive (or two empty hard
   drives, for a mirrored installation).
+
+## Hardware Configuration
+
+* Modify NUC6I7KYK BIOS settings for quiet fan operation
+    * Cooling: set Fan Control Mode to Quiet
+    * Performance: disable Hyper Threading Technology
+    * Performance: disable Turbo Boost Technology
+    * Power: enable Low Power Mode
 
 ## Quick Start
 
