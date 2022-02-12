@@ -45,7 +45,11 @@ for normal daily use, for one user:
 
 ## Hardware Configuration
 
-* Update BIOS to Version 0074 (29 OCT 2021)
+* Update NUC6I7KYK BIOS to Version 0074 (29 OCT 2021).
+* BIOS Devices: disable 'Thunderbolt Controller.'
+* BIOS Devices: disable 'WLAN.'
+* BIOS Devices: disable 'Bluetooth.'
+* BIOS Devices: disable 'Enhanced Consumer IR.'
 
 ## Quick Start
 
