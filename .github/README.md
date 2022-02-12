@@ -46,11 +46,6 @@ for normal daily use, for one user:
 ## Hardware Configuration
 
 * Update BIOS to Version 0074 (29 OCT 2021)
-* Modify NUC6I7KYK BIOS settings for quiet fan operation
-    * Cooling: set Fan Control Mode to Quiet
-    * Performance: disable Hyper Threading Technology
-    * Performance: disable Turbo Boost Technology
-    * Power: enable Low Power Mode
 
 ## Quick Start
 
