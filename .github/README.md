@@ -66,10 +66,11 @@ for normal daily use, for one user:
 
 4. Follow guided installation. Select/enable __only__ these options:
 
-    * hostname: _userl.machine_
-    * zfs guided installation: _stripe_ (for 1 disk), or _mirror_ (for 2 disks)
-    * IPv4: enable _dhcp_
-    * services: _ntpd_, _ntpdate_, _dumpdev_
+    * Set hostname to _userl.machine_.
+    * zfs guided installation: _stripe_ (for 1 disk), or _mirror_ (for 2 disks).
+    * For network interface _EM0_: enable _IPv4_, and enable _dhcp_.
+    * Install service _ntpd_.
+    * Install service _ntpdate_.
 
 5. Remove the USB stick, and reboot the PC to the new installation.
 
