@@ -8,7 +8,8 @@ Ansible playbook to configure FreeBSD on a NUC6I7KYK with the MATE DE.
 ## Table Of Contents
 
 * [Purpose](#purpose)
-* [Hardware Requirements](#hardware-requirements)
+* [Main Hardware](#main-hardware)
+* [Supplementary Hardware](#supplementary-hardware)
 * [Hardware Configuration](#hardware-configuration)
 * [Quick Start](#quick-start)
     * [Install Base System](#install-base-system)
@@ -26,12 +27,21 @@ for normal daily use, for one user:
 * Configure the MATE desktop environment.
 * Configure a basic set of applications.
 
-## Hardware Requirements
+## Main Hardware
 
 * NUC6I7KYK, with RAM installed, and one or two hard drives installed.
 * An empty/formattable USB stick (to write the FreeBSD iso to).
 * A workstation PC with with an empty/formattable hard drive (or two empty hard
   drives, for a mirrored installation).
+
+## Supplementary Hardware
+
+* [Logitech Z207 Powered Speakers](https://www.amazon.com/dp/B074KJ6JQW?psc=1):
+  for main desktop sound, connected to rear 3.5 mm input jack.
+* [eMeet USB Speakerphone](https://www.amazon.com/dp/B07Q3D7F8S?psc=1):
+  to provide mic + speaker for video-conferencing and recording.
+* [Logitech C920e Webcam (Mic-Disabled)](https://www.amazon.com/dp/B08CS18WVP?psc=1):
+  for cam-input only (mic-disabled, to declutter sound panel selections).
 
 ## Hardware Configuration
 
