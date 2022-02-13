@@ -68,7 +68,7 @@ for normal daily use, for one user:
 
     * Set hostname to _userl.machine_.
     * zfs guided installation: _stripe_ (for 1 disk), or _mirror_ (for 2 disks).
-    * For network interface _EM0_: enable _IPv4_, and enable _dhcp_.
+    * For network interface _em0_: enable _IPv4_, and enable _dhcp_.
     * Install service _ntpd_.
     * Install service _ntpdate_.
 
