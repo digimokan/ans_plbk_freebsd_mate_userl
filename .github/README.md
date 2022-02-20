@@ -36,11 +36,12 @@ for normal daily use, for one user:
 
 ## Supplementary Hardware
 
-* [Logitech Z207 Powered Speakers](https://www.amazon.com/dp/B074KJ6JQW?psc=1):
+* [HP Pavilion 22CWA 21.5 in 1080p IPS LED Monitor](https://www.amazon.com/dp/B015WCV70W).
+* [Logitech Z207 Powered Speakers](https://www.amazon.com/dp/B074KJ6JQW):
   for main desktop sound, connected to rear 3.5 mm input jack.
-* [eMeet USB Speakerphone](https://www.amazon.com/dp/B07Q3D7F8S?psc=1):
+* [eMeet USB Speakerphone](https://www.amazon.com/dp/B07Q3D7F8S):
   to provide mic + speaker for video-conferencing and recording.
-* [Logitech C920e Webcam (Mic-Disabled)](https://www.amazon.com/dp/B08CS18WVP?psc=1):
+* [Logitech C920e Webcam (Mic-Disabled)](https://www.amazon.com/dp/B08CS18WVP):
   for cam-input only (mic-disabled, to declutter sound panel selections).
 
 ## Hardware Configuration
