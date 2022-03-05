@@ -17,6 +17,7 @@ Ansible playbook to configure FreeBSD on a NUC6I7KYK with the MATE DE.
     * [Update Workstation](#update-workstation)
 * [Vault Variables](#vault-variables)
 * [Source Code Layout](#source-code-layout)
+* [Integration Tests](#integration-tests)
 * [Contributing](#contributing)
 
 ## Purpose
@@ -168,6 +169,23 @@ was set up during initial configuration.
 │ └── vault_password.txt  # password-string to encrypt and decrypt vault vars
 │
 ```
+
+## Integration Tests
+
+* Play a video in browser(s).
+* Check microphone input in browser(s): https://www.onlinemictest.com/.
+* Check webcam in browser(s): https://www.onlinemictest.com/webcam-test/.
+* Check mic and webcam in a google meeting.
+* Check mic and webcam in a zoom meeting.
+* Print a web page to the printer(s).
+* Print a text document to the printer(s).
+* Print a PDF document to the printer(s).
+* Scan a color image to the scanner(s).
+* Scan a text document to the scanner(s).
+* List, check, and delete an overnight backup.
+* In OBS, record a video with mic and webcam.
+* In OBS, record a video with mic and screen capture.
+* Check USB storage drive insertion and removal.
 
 ## Contributing
 
