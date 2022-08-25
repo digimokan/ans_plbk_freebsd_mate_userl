@@ -83,9 +83,9 @@
         user_name: "{{ wkst_user_and_group_name }}"
         video_card_make: "Intel"
         video_card_series: "HD"
-    - name: "Install and configure basic sound packages"
+    - name: "Install and configure the OSS sound driver layer"
       ansible.builtin.include_role:
-        name: ext/ans_role_config_sound
+        name: ext/ans_role_config_oss
       vars:
         sound_card_type: 'intel'
         force_set_sound_output_pcm_at_boot: '0'
