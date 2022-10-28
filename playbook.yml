@@ -133,9 +133,11 @@
     - name: "Configure automatic scanner discovery and driverless scanning"
       ansible.builtin.include_role:
         name: ans_role_config_automatic_scanning
-    - name: "Install and configure the gscan2pdf scanning application"
+    - name: "Install and configure the Simple-Scan scanning application"
       ansible.builtin.include_role:
-        name: ans_role_config_gscan2pdf
+        name: ans_role_config_simple_scan
+      vars:
+        remove_other_scanning_apps: true
     - name: "Configure webcam support"
       ansible.builtin.include_role:
         name: ans_role_config_webcam
