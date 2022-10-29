@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # FreeBSD ansible won't auto-update to latest pyXX-ansible version, so do this
-echo "Installing the latest 'pyXX-ansible' package"
+echo "Installing the latest 'pyXX-ansible' package...."
 pkg install --yes sysutils/ansible
 
 # use ansible-galaxy cmd to download roles & collections from github/galaxy/etc
