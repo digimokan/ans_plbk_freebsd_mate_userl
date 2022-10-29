@@ -78,12 +78,11 @@ for normal daily use, for one user:
 
 ### Configure Workstation
 
-1. Install _git_, _python_, and _ansible_ packages at the root prompt:
+1. Install _git_ package at the root prompt:
 
    ```shell
-   $ pkg install git python py39-ansible
+   $ pkg install git
    ```
-   _NOTE: sysutils/ansible package does not track latest python version._
 
 2. Clone project into a local project directory:
 
