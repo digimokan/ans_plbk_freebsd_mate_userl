@@ -44,6 +44,8 @@ for normal daily use, for one user:
   to provide mic + speaker for video-conferencing and recording.
 * [Logitech C920e Webcam (Mic-Disabled)](https://www.amazon.com/dp/B08CS18WVP):
   for cam-input only (mic-disabled, to declutter sound panel selections).
+* [Cable Matters Ultra Mini 4 Port USB 3.0 Hub](https://www.amazon.com/dp/B00PHPWLPA):
+  for adding more USB receptacles.
 
 ## Hardware Configuration
 
