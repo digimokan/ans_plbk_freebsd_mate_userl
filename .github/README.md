@@ -93,7 +93,7 @@ for normal daily use, for one user:
 2. Clone project into a local project directory:
 
    ```shell
-   $ git clone https://github.com/digimokan/ans_plbk_freebsd_mate_userl.git
+   $ git clone --recurse-submodules https://github.com/digimokan/ans_plbk_freebsd_mate_userl.git
    ```
 
 3. Change to the local project directory:
@@ -125,7 +125,13 @@ was set up during initial configuration.
    $ cd ans_plbk_freebsd_mate_userl
    ```
 
-3. Run the [`configure.sh`](../configure.sh) script to update the workstation.
+3. Optionally, pull in changes to this playbook and its submodules:
+
+   ```shell
+      $ git pull --ff-only --recurse-submodules
+         ```````
+
+4. Run the [`configure.sh`](../configure.sh) script to update the workstation.
 
    ```shell
    $ ./configure.sh
