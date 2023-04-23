@@ -15,6 +15,7 @@ roles:
   - src: https://github.com/digimokan/ans_role_config_mate_de
   - src: https://github.com/digimokan/ans_role_config_obs
   - src: https://github.com/digimokan/ans_role_config_oss
+  - src: https://github.com/digimokan/ans_role_config_shell
   - src: https://github.com/digimokan/ans_role_config_simple_scan
   - src: https://github.com/digimokan/ans_role_config_sndio
   - src: https://github.com/digimokan/ans_role_config_sudo
