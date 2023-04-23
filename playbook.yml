@@ -152,15 +152,17 @@
     - name: "Install and configure the OBS video-recording application"
       ansible.builtin.include_role:
         name: ans_role_config_obs
-    - name: "Install the Tarsnap backup program, and configure backups"
+    - name: "Install the restic backup program, and configure backups to a remote repo"
       ansible.builtin.include_role:
-        name: ans_role_config_tarsnap
+        name: ans_role_config_restic
       vars:
-        tarsnap_machine_label: "{{ wkst_user_and_group_name }}_nuc6i7_r1"
-        enable_automatic_backups: true
-        automatic_backup_dirs:
+        restic_user_name: "{{ wkst_user_and_group_name }}"
+        restic_s3_bucket_url: "{{ wkst_user_restic_s3_bucket_url }}"
+        restic_s3_bucket_key_id: "{{ wkst_user_restic_s3_bucket_key_id }}"
+        restic_s3_bucket_secret_keystring: "{{ wkst_user_restic_s3_bucket_secret_keystring }}"
+        automatic_restic_backup_dirs:
           - "/home/{{ wkst_user_and_group_name }}/Documents/"
-        tarsnap_user_guide_dir: "/home/{{ wkst_user_and_group_name }}/"
+        restic_user_guide_dir: "/home/{{ wkst_user_and_group_name }}/"
     - name: "Install and configure Xorg"
       ansible.builtin.include_role:
         name: ans_role_config_xorg
