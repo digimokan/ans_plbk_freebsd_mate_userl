@@ -169,9 +169,9 @@
         name: ans_role_config_restic
       vars:
         restic_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
-        restic_s3_bucket_url: "{{ wkst_user_restic_s3_bucket_url }}"
-        restic_s3_bucket_key_id: "{{ wkst_user_restic_s3_bucket_key_id }}"
-        restic_s3_bucket_secret_keystring: "{{ wkst_user_restic_s3_bucket_secret_keystring }}"
+        restic_s3_bucket_url: "{{ vault_clear_restic_s3_bucket_url }}"
+        restic_s3_bucket_key_id: "{{ vault_clear_restic_s3_bucket_key_id }}"
+        restic_s3_bucket_secret_keystring: "{{ vault_clear_restic_s3_bucket_secret_keystring }}"
         automatic_restic_backup_dirs:
           - "/home/{{ vault_clear_wkst_user_and_group_name }}/Documents/"
         restic_user_guide_dir: "/home/{{ vault_clear_wkst_user_and_group_name }}/"
