@@ -180,6 +180,7 @@
     - name: "Install and configure the Firefox browser"
       ansible.builtin.include_role:
         name: ans_role_config_firefox
+        public: true
       vars:
         firefox_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
         firefox_home_page: 'https://www.google.com'
@@ -193,6 +194,7 @@
     - name: "Install and configure the Chromium browser"
       ansible.builtin.include_role:
         name: ans_role_config_chromium
+        public: true
       vars:
         chromium_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
         chromium_home_page: 'https://www.gmail.com'
@@ -232,6 +234,7 @@
     - name: "Install the restic backup program, and configure backups to a remote repo"
       ansible.builtin.include_role:
         name: ans_role_config_restic
+        public: true
       vars:
         restic_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
         restic_s3_bucket_url: "{{ vault_clear_restic_s3_bucket_url }}"
