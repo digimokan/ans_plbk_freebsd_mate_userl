@@ -8,6 +8,8 @@
     admin_user_and_group_name: "admin"
     sudo_users_group_name: "wheel"
     root_user_group_name: "wheel"
+    video_card_make: "Intel"
+    video_card_series: "HD"
     zfs_pool: "zroot"
     # Note: temporarily set these user_password vars on first playbook run
     admin_user_password_for_login: ''
@@ -16,6 +18,13 @@
     wkst_user_password_for_bitwarden: ''
     admin_user_home_dir: "/home/{{ admin_user_and_group_name }}"
     wkst_user_home_dir: "/home/{{ vault_clear_wkst_user_and_group_name }}"
+    wkst_user_cache_dir: "/home/{{ vault_clear_wkst_user_and_group_name }}/Cache"
+    wkst_user_firefox_bookmarks_and_browse_history_path: "{{ wkst_user_cache_dir }}/firefox_bookmarks_and_browse_history.sqlite"
+    wkst_user_firefox_bookmark_icons_path: "{{ wkst_user_cache_dir }}/firefox_bookmark_icons.sqlite"
+    wkst_user_firefox_search_and_forms_history_path: "{{ wkst_user_cache_dir }}/firefox_search_and_forms_history.sqlite"
+    wkst_user_chromium_browse_and_search_history_path: "{{ wkst_user_cache_dir }}/chromium_browse_and_search_history.sqlite"
+    wkst_user_chromium_forms_history_path: "{{ wkst_user_cache_dir }}/chromium_forms_history.sqlite"
+    wkst_user_chromium_bookmarks_path: "{{ wkst_user_cache_dir }}/chromium_bookmarks.sqlite"
   tasks:
     - name: "Configure the machine's hostname"
       ansible.builtin.include_role:
@@ -35,24 +44,18 @@
       ansible.builtin.include_role:
         name: ext/ans_role_config_loader
       vars:
-        load_cpu_microcode_updates: true
+        loader_monitor_console_resolution: "1280x720"
     - name: "Install and configure the OSS sound driver layer"
       ansible.builtin.include_role:
         name: ext/ans_role_config_oss
       vars:
-        oss_sound_card_type: 'intel'
-        oss_force_set_sound_output_pcm_at_boot: '0'
-        oss_intel_nid_disable_list:
-          - { card: '0', nid: '30', descrip: 'rear speaker/optical combo jack optical-out-channel' }
-          - { card: '0', nid: '33', descrip: 'front headphones jack out-channel' }
-          - { card: '1', nid: '3', descrip: 'rear HDMI jack audio-out-channel' }
     - name: "Install and configure video card drivers"
       ansible.builtin.include_role:
         name: ext/ans_role_config_video_drivers
         public: true
       vars:
-        cfg_video_card_make: "Intel"
-        cfg_video_card_series: "HD"
+        cfg_video_card_make: "{{ video_card_make }}"
+        cfg_video_card_series: "{{ video_card_series }}"
     - name: "Configure webcam support"
       ansible.builtin.include_role:
         name: ans_role_config_webcam
@@ -61,55 +64,44 @@
       ansible.builtin.include_role:
         name: ans_role_config_freebsd_linux_compat
         public: true
-    - name: "Add and configure sudo-users group '{{ sudo_users_group_name }}'"
+    - name: "Configure all system groups"
       ansible.builtin.include_role:
         name: ext/ans_role_config_group
       vars:
-        cfg_group_name: "{{ sudo_users_group_name }}"
-        cfg_group_is_system_group: true
-    - name: "Add and configure admin group '{{ admin_user_and_group_name }}'"
-      ansible.builtin.include_role:
-        name: ext/ans_role_config_group
-      vars:
-        cfg_group_name: "{{ admin_user_and_group_name }}"
-    - name: "Add and configure user group '{{ vault_clear_wkst_user_and_group_name }}'"
-      ansible.builtin.include_role:
-        name: ext/ans_role_config_group
-      vars:
-        cfg_group_name: "{{ vault_clear_wkst_user_and_group_name }}"
+        cfg_groups_to_add:
+          - { group_name: "{{ sudo_users_group_name }}", is_system_group: true }
+          - { group_name: "{{ admin_user_and_group_name }}", is_system_group: false }
+          - { group_name: "{{ vault_clear_wkst_user_and_group_name }}", is_system_group: false }
     - name: "Install and configure the python passlib password-hashing module"
       ansible.builtin.include_role:
         name: ans_role_config_passlib
         public: true
-    - name: "Add and configure admin user '{{ admin_user_and_group_name }}'"
+    - name: "Configure all system users"
       ansible.builtin.include_role:
-        name: ext/ans_role_config_user
+        name: ans_role_config_user
       vars:
-        cfg_user_name: "{{ admin_user_and_group_name }}"
-        cfg_user_password: "{{ admin_user_password_for_login }}"
-        cfg_user_primary_group: "{{ admin_user_and_group_name }}"
-        cfg_user_groups:
-          - "{{ sudo_users_group_name }}"
-        cfg_user_create_home_dir_in_existing_filesystem: false
-        cfg_user_path_to_home_dir: "{{ admin_user_home_dir }}"
-        cfg_user_comment: "{{ admin_user_and_group_name }}"
         cfg_user_password_hash_type: "{{ passlib_password_hash_type }}"
         cfg_user_password_salt: "{{ passlib_password_constant_salt }}"
-    - name: "Add and configure workstation user '{{ vault_clear_wkst_user_and_group_name }}'"
-      ansible.builtin.include_role:
-        name: ext/ans_role_config_user
-      vars:
-        cfg_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
-        cfg_user_password: "{{ wkst_user_password_for_login }}"
-        cfg_user_primary_group: "{{ vault_clear_wkst_user_and_group_name }}"
-        cfg_user_groups:
-          - "{{ cfg_video_group_name }}"
-          - "{{ webcam_group_name }}"
-        cfg_user_create_home_dir_in_existing_filesystem: false
-        cfg_user_path_to_home_dir: "{{ wkst_user_home_dir }}"
-        cfg_user_comment: "{{ vault_clear_wkst_user_and_group_name }}"
-        cfg_user_password_hash_type: "{{ passlib_password_hash_type }}"
-        cfg_user_password_salt: "{{ passlib_password_constant_salt }}"
+        cfg_users_to_add:
+          - user_name: "{{ admin_user_and_group_name }}"
+            is_system_user: false
+            password: "{{ admin_user_password_for_login }}"
+            primary_group: "{{ admin_user_and_group_name }}"
+            groups:
+              - "{{ sudo_users_group_name }}"
+            create_home_dir_in_existing_filesystem: false
+            path_to_home_dir: "{{ admin_user_home_dir }}"
+            comment: "{{ admin_user_and_group_name }}"
+          - user_name: "{{ vault_clear_wkst_user_and_group_name }}"
+            is_system_user: false
+            password: "{{ wkst_user_password_for_login }}"
+            primary_group: "{{ vault_clear_wkst_user_and_group_name }}"
+            groups:
+              - "{{ cfg_video_group_name }}"
+              - "{{ webcam_group_name }}"
+            create_home_dir_in_existing_filesystem: false
+            path_to_home_dir: "{{ wkst_user_home_dir }}"
+            comment: "{{ vault_clear_wkst_user_and_group_name }}"
     - name: "Install and configure the lsblk block-device info utility"
       ansible.builtin.include_role:
         name: ans_role_config_lsblk
@@ -124,20 +116,14 @@
         zfs_datasets_to_create:
           - { pool: "{{ zpl }}", path: "{{ adir }}", owner: "{{ ausg }}", group: "{{ ausg }}", mode: '710', enc: '' }
           - { pool: "{{ zpl }}", path: "{{ wdir }}", owner: "{{ wusg }}", group: "{{ wusg }}", mode: '710', enc: "{{ wpswd }}" }
+          - { pool: "{{ zpl }}", path: "{{ cdir }}", owner: "{{ wusg }}", group: "{{ wusg }}", mode: '755', enc: '' }
         zpl: "{{ zfs_pool }}"
         adir: "{{ admin_user_home_dir }}"
         wdir: "{{ wkst_user_home_dir }}"
+        cdir: "{{ wkst_user_cache_dir }}"
         wpswd: "{{ wkst_user_password_for_zfs_homedir_dataset }}"
         ausg: "{{ admin_user_and_group_name }}"
         wusg: "{{ vault_clear_wkst_user_and_group_name }}"
-    - name: "Configure sudo settings for auth group '{{ sudo_users_group_name }}'"
-      ansible.builtin.include_role:
-        name: ext/ans_role_config_sudo
-      vars:
-        ask_password_timeout: 45
-        password_prompt_timeout_minutes: 0
-        use_root_umask: true
-        set_auth_for_group: "{{ sudo_users_group_name }}"
     - name: "Clone playbook used to set up the machine, and emplace vault password"
       ansible.builtin.include_role:
         name: ans_role_config_user_playbook
@@ -179,9 +165,6 @@
     - name: "Install and configure the sndio sound driver layer"
       ansible.builtin.include_role:
         name: ans_role_config_sndio
-    - name: "Install and configure the automount device-mounting utility"
-      ansible.builtin.include_role:
-        name: ext/ans_role_config_automount
     - name: "Install and configure the LibreOffice office application suite"
       ansible.builtin.include_role:
         name: ans_role_config_libreoffice
@@ -189,7 +172,7 @@
       ansible.builtin.include_role:
         name: ans_role_config_vlc
       vars:
-        enable_dvd_support: true
+        vlc_enable_dvd_support: true
     - name: "Define list of browser search providers"
       ansible.builtin.include_role:
         name: ext/ans_vars_browser_search_providers
@@ -204,6 +187,9 @@
         firefox_install_bitwarden_ext: true
         firefox_install_user_agent_switcher_ext: true
         firefox_search_providers: "{{ browser_search_providers }}"
+        firefox_try_link_to_saved_bookmarks_and_browse_history_path: "{{ wkst_user_firefox_bookmarks_and_browse_history_path }}"
+        firefox_try_link_to_saved_bookmark_icons_history_path: "{{ wkst_user_firefox_bookmark_icons_path }}"
+        firefox_try_link_to_saved_search_and_forms_history_path: "{{ wkst_user_firefox_search_and_forms_history_path }}"
     - name: "Install and configure the Chromium browser"
       ansible.builtin.include_role:
         name: ans_role_config_chromium
@@ -214,28 +200,35 @@
         chromium_install_bitwarden_ext: true
         chromium_install_user_agent_switcher_ext: true
         chromium_search_providers: "{{ browser_search_providers }}"
+        chromium_try_link_to_saved_user_browse_and_search_history_path: "{{ wkst_user_chromium_browse_and_search_history_path }}"
+        chromium_try_link_to_saved_user_form_history_path: "{{ wkst_user_chromium_forms_history_path }}"
+        chromium_try_link_to_saved_user_bookmarks_path: "{{ wkst_user_chromium_bookmarks_path }}"
     - name: "Install and configure Avahi"
       ansible.builtin.include_role:
         name: ans_role_config_avahi
         public: true
       vars:
-        enable_host_discovery_service: true
+        avahi_enable_host_discovery_service: true
     - name: "Configure automatic printer discovery and driverless printing"
       ansible.builtin.include_role:
         name: ans_role_config_automatic_printing
       vars:
-        notify_avahi_handler_on_auto_printing_change: "{{ handler_to_restart_avahi_services }}"
+        cfg_autoprint_notify_avahi_handler_on_change: "{{ avahi_handler_to_restart_avahi_services }}"
     - name: "Configure automatic scanner discovery and driverless scanning"
       ansible.builtin.include_role:
         name: ans_role_config_automatic_scanning
       vars:
-        notify_avahi_handler_on_auto_printing_change: "{{ handler_to_restart_avahi_services }}"
+        cfg_autoscan_notify_avahi_handler_on_change: "{{ avahi_handler_to_restart_avahi_services }}"
     - name: "Install and configure the Simple-Scan scanning application"
       ansible.builtin.include_role:
         name: ans_role_config_simple_scan
     - name: "Install and configure the OBS video-recording application"
       ansible.builtin.include_role:
         name: ans_role_config_obs
+      vars:
+        obs_studio_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
+        obs_studio_user_video_save_dir: "{{ wkst_user_home_dir }}/Videos"
+        obs_studio_user_video_rec_format: "mp4"
     - name: "Install the restic backup program, and configure backups to a remote repo"
       ansible.builtin.include_role:
         name: ans_role_config_restic
@@ -258,33 +251,60 @@
         public: true
       vars:
         fish_user_name: "{{ admin_user_and_group_name }}"
+    - name: "Install and configure Xorg"
+      ansible.builtin.include_role:
+        name: ans_role_config_xorg
+      vars:
+        xorg_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
     - name: "Install and configure the MATE desktop environment"
       ansible.builtin.include_role:
         name: ext/ans_role_config_mate_de
+        public: true
       vars:
-        user_name: "{{ vault_clear_wkst_user_and_group_name }}"
-        enable_sound_support: true
-        enable_printing_support: true
-        terminal_shell: "{{ fish_main_cmd }}"
-        terminal_window_height: "48"
-        terminal_window_width: "192"
+        mate_de_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
+        mate_de_enable_sound_support: true
+        mate_de_enable_printing_support: true
+        mate_de_terminal_shell: "{{ fish_main_cmd }}"
+        mate_de_terminal_window_height: "48"
+        mate_de_terminal_window_width: "192"
     - name: "Install and configure the LightDM display manager"
       ansible.builtin.include_role:
         name: ext/ans_role_config_lightdm_dm
       vars:
-        default_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
-        hide_users_list: [ "{{ admin_user_and_group_name }}" ]
-        session: "mate"
-        login_screen_image_path: "/usr/local/share/backgrounds/mate/desktop/Ubuntu-Mate-Cold-no-logo.png"
+        lightdm_hide_users_list: [ "{{ admin_user_and_group_name }}" ]
+        lightdm_session: "{{ mate_de_session.session_name }}"
+        lightdm_login_screen_image_path: "{{ mate_de_background_image_path }}"
     - name: "Install a standard set of system font packages"
       ansible.builtin.include_role:
         name: ext/ans_role_config_fonts
       vars:
-        install_ms_legacy_fonts: true
-        install_ms_vista_fonts: true
+        cfg_fonts_install_ms_legacy_fonts: true
+        cfg_fonts_install_ms_vista_fonts: true
+    - name: "Configure sudo settings and sudo permissions for users and groups"
+      ansible.builtin.include_role:
+        name: ext/ans_role_config_sudo
+      vars:
+        cfg_sudo_ask_password_timeout: 45
+        cfg_sudo_password_prompt_timeout_minutes: 0
+        cfg_sudo_use_root_umask: true
+        cfg_sudo_sudoers_rules:
+          - label: "ansible_sudo_users_group_all_auths"
+            sudoer_name: "{{ sudo_users_group_name }}"
+            sudoer_type: "group"
+            allow_run_on_host: "ALL"
+            allow_run_as_user: "ALL"
+            allow_commands: "ALL"
+            req_passwd: true
+          - "{{ mate_de_network_mgr_sudoers_rule }}"
+    - name: "Configure cron jobs for all users"
+      ansible.builtin.include_role:
+        name: ans_role_config_cron
+      vars:
+        cfg_cron_jobs:
+          - "{{ restic_automatic_daily_backup_cron_job }}"
     - name: "Set env vars, login actions, and logout actions for workstation user '{{ vault_clear_wkst_user_and_group_name }}'"
       ansible.builtin.include_role:
         name: ans_role_config_shell
       vars:
-        user_name: "{{ vault_clear_wkst_user_and_group_name }}"
+        cfg_shell_user_name: "{{ vault_clear_wkst_user_and_group_name }}"
 

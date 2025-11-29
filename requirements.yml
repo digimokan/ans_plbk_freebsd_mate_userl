@@ -1,10 +1,10 @@
 roles:
-  - src: https://github.com/digimokan/ans_role_config_automount
   - src: https://github.com/digimokan/ans_role_config_automatic_printing
   - src: https://github.com/digimokan/ans_role_config_automatic_scanning
   - src: https://github.com/digimokan/ans_role_config_avahi
   - src: https://github.com/digimokan/ans_role_config_bitwarden_cli
   - src: https://github.com/digimokan/ans_role_config_chromium
+  - src: https://github.com/digimokan/ans_role_config_cron
   - src: https://github.com/digimokan/ans_role_config_firefox
   - src: https://github.com/digimokan/ans_role_config_freebsd_linux_compat
   - src: https://github.com/digimokan/ans_role_config_fish
@@ -35,6 +35,7 @@ roles:
   - src: https://github.com/digimokan/ans_role_config_vlc
   - src: https://github.com/digimokan/ans_role_config_webcam
   - src: https://github.com/digimokan/ans_role_config_xdg_user_dirs
+  - src: https://github.com/digimokan/ans_role_config_xorg
   - src: https://github.com/digimokan/ans_role_config_xsel
   - src: https://github.com/digimokan/ans_role_config_zfs_datasets
   - src: https://github.com/digimokan/ans_role_config_zfs_hw
